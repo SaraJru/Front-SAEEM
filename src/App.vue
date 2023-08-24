@@ -12,5 +12,4 @@ import Login from './components/Login.vue'
 </template>
 
 <style scoped>
-
 </style>
