@@ -38,7 +38,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-image: linear-gradient(to top right, yellow, blue);
+  background: rgb(16,40,119);
+  background: linear-gradient(225deg, rgba(16,40,119,1) 20%, rgba(168,112,19,1) 99%); 
 }
 
 
