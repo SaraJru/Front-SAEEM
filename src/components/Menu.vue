@@ -1,4 +1,33 @@
 <script>
+
+import axios from 'axios'
+
+export default {
+    name: 'Menu',
+    data() {
+        return {
+            fields: ['id', 'status_name', 'insert_date', 'update_date'],
+            id: "",
+            status_name: "",
+            insert_date: "",
+            update_date: "",
+            listarStatus: [],
+        }
+    },
+    mounted() {
+        axios.get('http://127.0.0.1:8000/catalog/status/')
+            .then(response => {
+                this.listarStatus = response.data;
+                console.log(this.listarStatus);
+            })
+            .catch(function (error){
+                console.log(error)
+            })
+            .finally(function(){
+
+            })
+    },
+}
 </script>
 
 <template>
@@ -57,7 +86,7 @@
                     </a>
                 </h6>
                 <ul class="nav flex-column mb-auto">
-                    <li class="nav-item">
+                    <li class="nav-item">npm ru
                     <a class="nav-link d-flex align-items-center gap-2" >
                         
                         Current month
@@ -121,128 +150,21 @@
 
             <h2>Section title</h2>
             <div class="table-responsive small">
-                <table class="table table-striped table-sm">
+                <table class="table table-striped table-sm" :items="listarStatus" :fields="fields">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
+                    <th scope="col">Nombre de estado</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Fecha de actualización</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    </tr>
-                    <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    </tr>
-                    <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    </tr>
-                    <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    </tr>
-                    <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                    </tr>
-                    <tr>
-                    <td>1,005</td>
-                    <td>dashboard</td>
-                    <td>irrelevant</td>
-                    <td>text</td>
-                    <td>placeholder</td>
-                    </tr>
-                    <tr>
-                    <td>1,006</td>
-                    <td>dashboard</td>
-                    <td>illustrative</td>
-                    <td>rich</td>
-                    <td>data</td>
-                    </tr>
-                    <tr>
-                    <td>1,007</td>
-                    <td>placeholder</td>
-                    <td>tabular</td>
-                    <td>information</td>
-                    <td>irrelevant</td>
-                    </tr>
-                    <tr>
-                    <td>1,008</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    </tr>
-                    <tr>
-                    <td>1,009</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    </tr>
-                    <tr>
-                    <td>1,010</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    </tr>
-                    <tr>
-                    <td>1,011</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    </tr>
-                    <tr>
-                    <td>1,012</td>
-                    <td>text</td>
-                    <td>placeholder</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                    </tr>
-                    <tr>
-                    <td>1,013</td>
-                    <td>dashboard</td>
-                    <td>irrelevant</td>
-                    <td>text</td>
-                    <td>visual</td>
-                    </tr>
-                    <tr>
-                    <td>1,014</td>
-                    <td>dashboard</td>
-                    <td>illustrative</td>
-                    <td>rich</td>
-                    <td>data</td>
-                    </tr>
-                    <tr>
-                    <td>1,015</td>
-                    <td>random</td>
-                    <td>tabular</td>
-                    <td>information</td>
-                    <td>text</td>
+                    <tr v-for="ls in listarStatus" v-bind:key="ls.id">
+                    <td>{{ls.id}}</td>
+                    <td>{{ls.status_name}}</td>
+                    <td>{{ls.insert_date}}</td>
+                    <td>{{ls.update_date}}</td>
                     </tr>
                 </tbody>
                 </table>
