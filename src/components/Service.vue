@@ -15,6 +15,9 @@ export default {
         }
     },
     methods: {
+        limpiar(){
+            this.service_name = "";
+        },
         createService(){
             axios.post('catalog/service/', {
                 service_name: this.service_name
@@ -25,20 +28,24 @@ export default {
             .catch((error) => {
                 console.log(error);
             })
+            this.listar();
+            this.limpiar();
+        },
+        listar(){
+            axios.get('catalog/service/')
+                .then(response => {
+                    this.listarService = response.data;
+                    console.log(this.listarService);
+                })
+                .catch(function (error){
+                    console.log(error)
+                })
+                .finally(function(){
+                })
         }
     },
     mounted() {
-        axios.get('catalog/service/')
-            .then(response => {
-                this.listarService = response.data;
-                console.log(this.listarService);
-            })
-            .catch(function (error){
-                console.log(error)
-            })
-            .finally(function(){
-
-            })
+        this.listar()
     },
 }
 </script>

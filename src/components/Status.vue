@@ -15,6 +15,9 @@ export default {
         }
     },
     methods: {
+        limpiar(){
+            this.status_name = "";
+        },
         createStatus(){
             axios.post('catalog/status/', {
                 status_name: this.status_name
@@ -25,20 +28,24 @@ export default {
             .catch((error) => {
                 console.log(error);
             })
+            this.listar();
+            this.limpiar();
+        },
+        listar(){
+            axios.get('catalog/status/')
+                .then(response => {
+                    this.listarStatus = response.data;
+                    console.log(this.listarStatus);
+                })
+                .catch(function (error){
+                    console.log(error)
+                })
+                .finally(function(){
+                })
         }
     },
     mounted() {
-        axios.get('catalog/status/')
-            .then(response => {
-                this.listarStatus = response.data;
-                console.log(this.listarStatus);
-            })
-            .catch(function (error){
-                console.log(error)
-            })
-            .finally(function(){
-
-            })
+        this.listar()
     },
 }
 </script>
@@ -81,8 +88,8 @@ export default {
         </div>
         <div>
             <div class="mb-3">
-                <label for="statusName" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="statusName" placeholder="Nombre de status" v-model="status_name">
+                <label for="statusName" class="form-label" style="color: white;">Nombre de Estado</label>
+                <input type="text" class="form-control" id="statusName" placeholder="Nombre de estado" v-model="status_name">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary mb-3" @click="createStatus">Crear</button>
