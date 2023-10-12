@@ -1,5 +1,6 @@
 import Login from './components/Login.vue'
-import Menu from './components/Menu.vue'
+import Status from './components/Status.vue'
+import Service from './components/Service.vue'
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const history = createWebHashHistory(
@@ -8,12 +9,16 @@ const history = createWebHashHistory(
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     component: Login,
   },
   {
-    path: '/menu',
-    component: Menu,
+    path: '/status',
+    component: Status,
+  },
+  {
+    path: '/service',
+    component: Service,
   },
 ];
 
