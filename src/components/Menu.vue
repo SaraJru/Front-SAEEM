@@ -14,6 +14,19 @@ export default {
             listarStatus: [],
         }
     },
+    methods: {
+        createStatus(){
+            axios.post('http://127.0.0.1:8000/catalog/status/', {
+                status_name: this.status_name
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    },
     mounted() {
         axios.get('http://127.0.0.1:8000/catalog/status/')
             .then(response => {
@@ -148,7 +161,7 @@ export default {
 
             
 
-            <h2>Section title</h2>
+            <h2 style="color: white;">CONTENIDO</h2>
             <div class="table-responsive small">
                 <table class="table table-striped table-sm" :items="listarStatus" :fields="fields">
                 <thead>
@@ -168,6 +181,15 @@ export default {
                     </tr>
                 </tbody>
                 </table>
+            </div>
+            <div>
+                <div class="mb-3">
+                    <label for="statusName" class="form-label">Email address</label>
+                    <input type="text" class="form-control" id="statusName" placeholder="Nombre de status" v-model="status_name">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3" @click="createStatus">Crear</button>
+                </div>
             </div>
             </main>
         </div>
