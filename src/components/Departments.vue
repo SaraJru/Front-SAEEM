@@ -3,24 +3,24 @@
 import axios from 'axios'
 
 export default {
-    name: 'Status',
+    name: 'Departments',
     data() {
         return {
-            fields: ['id', 'status_name', 'insert_date', 'update_date'],
+            fields: ['id', 'department_name', 'insert_date', 'update_date'],
             id: "",
-            status_name: "",
+            department_name: "",
             insert_date: "",
             update_date: "",
-            listStatus: [],
+            listDepartments: [],
         }
     },
     methods: {
         limpiar(){
-            this.status_name = "";
+            this.department_name = "";
         },
-        createStatus(){
-            axios.post('catalog/status/', {
-                status_name: this.status_name
+        createRol(){
+            axios.post('catalog/departments/', {
+                department_name: this.department_name
             })
             .then(response => {
                 console.log(response);
@@ -32,10 +32,10 @@ export default {
             this.limpiar();
         },
         listar(){
-            axios.get('catalog/status/')
+            axios.get('catalog/departments/')
                 .then(response => {
-                    this.listStatus = response.data;
-                    console.log(this.listStatus);
+                    this.listDepartments = response.data;
+                    console.log(this.listDepartments);
                 })
                 .catch(function (error){
                     console.log(error)
@@ -65,34 +65,34 @@ export default {
             </div>
         </div>
 
-        <h2 style="color: white;">ESTADOS</h2>
+        <h2 style="color: white;">DEPARTAMENTOS</h2>
         <div class="table-responsive small">
-            <table class="table table-striped table-sm" :items="listStatus" :fields="fields">
+            <table class="table table-striped table-sm" :items="listDepartments" :fields="fields">
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de estado</th>
+                <th scope="col">Nombre del departamento</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Fecha de actualización</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ls in listStatus" v-bind:key="ls.id">
-                <td>{{ls.id}}</td>
-                <td>{{ls.status_name}}</td>
-                <td>{{ls.insert_date}}</td>
-                <td>{{ls.update_date}}</td>
+                <tr v-for="ld in listDepartments" v-bind:key="ld.id">
+                <td>{{ld.id}}</td>
+                <td>{{ld.department_name}}</td>
+                <td>{{ld.insert_date}}</td>
+                <td>{{ld.update_date}}</td>
                 </tr>
             </tbody>
             </table>
         </div>
         <div>
             <div class="mb-3">
-                <label for="statusName" class="form-label" style="color: white;">Nombre de Estado</label>
-                <input type="text" class="form-control" id="statusName" placeholder="Nombre de estado" v-model="status_name">
+                <label for="departmentName" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="departmentName" placeholder="Nombre del departamento" v-model="department_name">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3" @click="createStatus">Crear</button>
+                <button type="submit" class="btn btn-primary mb-3" @click="createRol">Crear</button>
             </div>
         </div>
     </main>

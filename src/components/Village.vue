@@ -3,24 +3,24 @@
 import axios from 'axios'
 
 export default {
-    name: 'Status',
+    name: 'Village',
     data() {
         return {
-            fields: ['id', 'status_name', 'insert_date', 'update_date'],
+            fields: ['id', 'village_name', 'insert_date', 'update_date'],
             id: "",
-            status_name: "",
+            village_name: "",
             insert_date: "",
             update_date: "",
-            listStatus: [],
+            listVillage: [],
         }
     },
     methods: {
         limpiar(){
-            this.status_name = "";
+            this.village_name = "";
         },
-        createStatus(){
-            axios.post('catalog/status/', {
-                status_name: this.status_name
+        createVillage(){
+            axios.post('catalog/village/', {
+                village_name: this.village_name
             })
             .then(response => {
                 console.log(response);
@@ -32,10 +32,10 @@ export default {
             this.limpiar();
         },
         listar(){
-            axios.get('catalog/status/')
+            axios.get('catalog/village/')
                 .then(response => {
-                    this.listStatus = response.data;
-                    console.log(this.listStatus);
+                    this.listVillage = response.data;
+                    console.log(this.listVillage);
                 })
                 .catch(function (error){
                     console.log(error)
@@ -65,34 +65,34 @@ export default {
             </div>
         </div>
 
-        <h2 style="color: white;">ESTADOS</h2>
+        <h2 style="color: white;">ALDEAS</h2>
         <div class="table-responsive small">
-            <table class="table table-striped table-sm" :items="listStatus" :fields="fields">
+            <table class="table table-striped table-sm" :items="listVillage" :fields="fields">
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de estado</th>
+                <th scope="col">Nombre de la aldea</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Fecha de actualización</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ls in listStatus" v-bind:key="ls.id">
-                <td>{{ls.id}}</td>
-                <td>{{ls.status_name}}</td>
-                <td>{{ls.insert_date}}</td>
-                <td>{{ls.update_date}}</td>
+                <tr v-for="lv in listVillage" v-bind:key="lv.id">
+                <td>{{lv.id}}</td>
+                <td>{{lv.village_name}}</td>
+                <td>{{lv.insert_date}}</td>
+                <td>{{lv.update_date}}</td>
                 </tr>
             </tbody>
             </table>
         </div>
         <div>
             <div class="mb-3">
-                <label for="statusName" class="form-label" style="color: white;">Nombre de Estado</label>
-                <input type="text" class="form-control" id="statusName" placeholder="Nombre de estado" v-model="status_name">
+                <label for="villageName" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="villageName" placeholder="Nombre de la aldea" v-model="village_name">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3" @click="createStatus">Crear</button>
+                <button type="submit" class="btn btn-primary mb-3" @click="createVillage">Crear</button>
             </div>
         </div>
     </main>

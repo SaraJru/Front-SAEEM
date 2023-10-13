@@ -11,7 +11,7 @@ export default {
             service_name: "",
             insert_date: "",
             update_date: "",
-            listarService: [],
+            listService: [],
         }
     },
     methods: {
@@ -34,8 +34,8 @@ export default {
         listar(){
             axios.get('catalog/service/')
                 .then(response => {
-                    this.listarService = response.data;
-                    console.log(this.listarService);
+                    this.listService = response.data;
+                    console.log(this.listService);
                 })
                 .catch(function (error){
                     console.log(error)
@@ -67,17 +67,17 @@ export default {
 
         <h2 style="color: white;">SERVICIOS</h2>
         <div class="table-responsive small">
-            <table class="table table-striped table-sm" :items="listarService" :fields="fields">
+            <table class="table table-striped table-sm" :items="listService" :fields="fields">
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de estado</th>
+                <th scope="col">Nombre de servicio</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Fecha de actualización</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ls in listarService" v-bind:key="ls.id">
+                <tr v-for="ls in listService" v-bind:key="ls.id">
                 <td>{{ls.id}}</td>
                 <td>{{ls.service_name}}</td>
                 <td>{{ls.insert_date}}</td>
