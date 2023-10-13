@@ -1,6 +1,10 @@
 import Login from './components/Login.vue'
 import Status from './components/Status.vue'
 import Service from './components/Service.vue'
+import Roles from './components/Roles.vue'
+import Departments from './components/Departments.vue'
+import Village from './components/Village.vue'
+import Identification from './components/Identification.vue'
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const history = createWebHashHistory(
@@ -20,6 +24,27 @@ const routes = [
     path: '/service',
     component: Service,
   },
+
+  {
+    path: '/roles',
+    component: Roles,
+  },
+  
+  {
+    path: '/departments',
+    component: Departments,
+  },
+
+  {
+    path: '/village',
+    component: Village,
+  },
+
+  {
+    path: '/identificationType',
+    component: Identification,
+  },
+
 ];
 
 const router = createRouter({

@@ -3,24 +3,24 @@
 import axios from 'axios'
 
 export default {
-    name: 'Status',
+    name: 'Identification',
     data() {
         return {
-            fields: ['id', 'status_name', 'insert_date', 'update_date'],
+            fields: ['id', 'identification_name', 'insert_date', 'update_date'],
             id: "",
-            status_name: "",
+            identification_name: "",
             insert_date: "",
             update_date: "",
-            listStatus: [],
+            listIdentifications: [],
         }
     },
     methods: {
         limpiar(){
-            this.status_name = "";
+            this.identification_name = "";
         },
-        createStatus(){
-            axios.post('catalog/status/', {
-                status_name: this.status_name
+        createIdentificationType(){
+            axios.post('catalog/identificationType/', {
+                identification_name: this.identification_name
             })
             .then(response => {
                 console.log(response);
@@ -32,10 +32,10 @@ export default {
             this.limpiar();
         },
         listar(){
-            axios.get('catalog/status/')
+            axios.get('catalog/identificationType/')
                 .then(response => {
-                    this.listStatus = response.data;
-                    console.log(this.listStatus);
+                    this.listIdentifications = response.data;
+                    console.log(this.listIdentifications);
                 })
                 .catch(function (error){
                     console.log(error)
@@ -65,34 +65,34 @@ export default {
             </div>
         </div>
 
-        <h2 style="color: white;">ESTADOS</h2>
+        <h2 style="color: white;">Tipos de identificación</h2>
         <div class="table-responsive small">
-            <table class="table table-striped table-sm" :items="listStatus" :fields="fields">
+            <table class="table table-striped table-sm" :items="listIdentifications" :fields="fields">
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre de estado</th>
+                <th scope="col">Tipo de identificación</th>
                 <th scope="col">Fecha de creación</th>
                 <th scope="col">Fecha de actualización</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ls in listStatus" v-bind:key="ls.id">
-                <td>{{ls.id}}</td>
-                <td>{{ls.status_name}}</td>
-                <td>{{ls.insert_date}}</td>
-                <td>{{ls.update_date}}</td>
+                <tr v-for="li in listIdentifications" v-bind:key="li.id">
+                <td>{{li.id}}</td>
+                <td>{{li.identification_name}}</td>
+                <td>{{li.insert_date}}</td>
+                <td>{{li.update_date}}</td>
                 </tr>
             </tbody>
             </table>
         </div>
         <div>
             <div class="mb-3">
-                <label for="statusName" class="form-label" style="color: white;">Nombre de Estado</label>
-                <input type="text" class="form-control" id="statusName" placeholder="Nombre de estado" v-model="status_name">
+                <label for="identificationName" class="form-label">Email address</label>
+                <input type="text" class="form-control" id="identificationName" placeholder="Tipo de identificación" v-model="identification_name">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3" @click="createStatus">Crear</button>
+                <button type="submit" class="btn btn-primary mb-3" @click="createIdentificationType">Crear</button>
             </div>
         </div>
     </main>
