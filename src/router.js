@@ -5,6 +5,8 @@ import Roles from './components/Roles.vue'
 import Departments from './components/Departments.vue'
 import Village from './components/Village.vue'
 import Identification from './components/Identification.vue'
+import WattmeterBrand from './components/WattmeterBrand.vue'
+import Wattmeter from './components/Wattmeter.vue'
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const history = createWebHashHistory(
@@ -43,6 +45,16 @@ const routes = [
   {
     path: '/identificationType',
     component: Identification,
+  },
+
+  {
+    path: '/wattmeterBrand',
+    component: WattmeterBrand,
+  },
+
+  {
+    path: '/wattmeter',
+    component: Wattmeter,
   },
 
 ];
