@@ -1,6 +1,7 @@
 <script>
 
 import axios from 'axios'
+import router from '../router';
 
 export default {
     name: 'Departments',
@@ -18,6 +19,11 @@ export default {
     },
     methods: {
         limpiar(){
+            this.department_name = '';
+            this.editDepartmentName = '';
+            router.push('/departments');
+        },
+        limpiarUpdate(){
             location.reload();
         },
         createRol(){
@@ -44,7 +50,7 @@ export default {
                 console.log(error);
             })
             this.listar();
-            this.limpiar();
+            this.limpiarUpdate();
         },
         listar(){
             axios.get('catalog/departments/')
@@ -65,7 +71,7 @@ export default {
     mounted() {
         this.listar();
     },
-}
+}    
 </script>
 
 <template>
@@ -74,8 +80,29 @@ export default {
             <h1 class="h2">Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCreacionDep">
+                Crear nuevo Departamento
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="ModalCreacionDep" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación de Departamentos</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="departmentName" class="form-label">Nombre del Departamento Nuevo</label>
+                                <input type="text" class="form-control" id="departmentName" placeholder="Nombre del departamento" v-model="department_name">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @click="createRol">Crear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
                 This week
@@ -121,7 +148,7 @@ export default {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
-                                        <button type="button" class="btn btn-primary" @click="updateRol">Guardar</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="updateRol">Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -133,11 +160,10 @@ export default {
         </div>
         <div>
             <div class="mb-3">
-                <label for="departmentName" class="form-label">Nombre del Departamento Nuevo</label>
-                <input type="text" class="form-control" id="departmentName" placeholder="Nombre del departamento" v-model="department_name">
+                
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3" @click="createRol">Crear</button>
+
             </div>
         </div>
     </main>
