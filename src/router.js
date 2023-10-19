@@ -15,7 +15,12 @@ const history = createWebHistory(import.meta.env.BASE_URL);
 
 const routes = [
   {
+    path: '/',
+    component: Login,
+  },
+  {
     path: '/login',
+    name: 'Login',
     component: Login,
   },
   {
@@ -64,6 +69,7 @@ const routes = [
 
   {
     path: '/listAccounts',
+    name: 'ListAccounts',
     component: ListAccounts,
   },
 
