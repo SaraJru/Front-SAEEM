@@ -86,7 +86,18 @@ export default {
         </div>
 
         <h2 style="color: white;">CONTADORES</h2>
-        <div class="table-responsive small">
+        <table class="table table-striped table-sm" :items="listWattmeter" :fields="fields">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Número de Contador</th>
+            <th scope="col">Marca de Contador</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Fecha de actualización</th>
+            </tr>
+        </thead>
+        </table>
+        <div class="table-responsive small" style="max-height: 300px; overflow-y: auto;">
             <table class="table table-striped table-sm" :items="listWattmeter" :fields="fields">
             <thead>
                 <tr>

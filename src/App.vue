@@ -14,11 +14,11 @@ if (store.state.autoLoginExecuted){
 </script>
 
 <template>
-    <div style="position: fixed; top: 20px; left: 35px">
+    <div style="position:relative; top: 20px; left: 35px">
         <img src="/EEM-Logo.png" width="200" height="125" />
     </div>
     <div>
-        <div style="padding-top: 10%;">
+        <div>
             <header class="navbar bg-dark flex-md-nowrap shadow" data-bs-theme="dark">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" >Company name</a>
             </header>
@@ -26,7 +26,7 @@ if (store.state.autoLoginExecuted){
             <div class="container-fluid">
                 <div class="row">
                     <div class="sidebar border border-right col-md-3 col-lg-3 bg-body-tertiary">
-                    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+                    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel" style="min-height: 85vh;">
                         <div class="offcanvas-body d-md-flex flex-column pt-lg-3 overflow-y-auto">
                             
                             <ul class="nav flex-column">
