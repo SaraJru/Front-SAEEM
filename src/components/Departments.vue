@@ -26,7 +26,7 @@ export default {
         limpiarUpdate(){
             location.reload();
         },
-        createRol(){
+        createDepartment(){
             axios.post('catalog/departments/', {
                 department_name: this.department_name
             })
@@ -98,15 +98,12 @@ export default {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
-                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @click="createRol">Crear</button>
+                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @click="createDepartment">Crear</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-                This week
-            </button>
             </div>
         </div>
 
