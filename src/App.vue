@@ -2,9 +2,7 @@
 
 import store from './store'
 
-const logueado = () => {
-    return store.state.token;
-}
+const logueado = store.state.token;
 
 const salir = () => {
     store.dispatch('salir');
@@ -89,8 +87,7 @@ if (store.state.autoLoginExecuted){
                                 </li>
                             </ul>
                             <hr class="my-3">
-                            
-                            <button type="button" class="btn btn-outline-secondary" @click="salir" v-if="logueado">Logout</button>
+                            <button type="button" class="btn btn-outline-secondary" @click="salir" v-if="logueado == null">Logout</button>
                         </div>
                     </div>
                 </div>
