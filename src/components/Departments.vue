@@ -39,7 +39,7 @@ export default {
             this.limpiar();
             this.listar();
         },
-        updateRol(){
+        updateDepartment(){
             axios.patch(`catalog/departments/${this.id}/`, {
                 department_name: this.editDepartmentName
             })
@@ -145,7 +145,7 @@ export default {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="updateRol">Guardar</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="updateDepartment">Guardar</button>
                                     </div>
                                 </div>
                             </div>
