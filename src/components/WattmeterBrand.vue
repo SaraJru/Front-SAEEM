@@ -108,7 +108,7 @@ export default {
         </div>
 
         <h2 style="color: white;">MARCAS DE CONTADORES</h2>
-        <div class="table-responsive small table-responsive" >
+        <div class="table-responsive small table-responsive" style="max-height: 300px; overflow-y: auto;">
             <table class="table table-striped table-sm" :items="listwattmeterBrand" :fields="fields">
             <thead>
                 <tr>

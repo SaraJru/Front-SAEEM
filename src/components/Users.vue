@@ -110,7 +110,7 @@ export default {
         </div>
 
         <h2 style="color: white;">Usuarios</h2>
-        <div class="table-responsive small">
+        <div class="table-responsive small" style="max-height: 300px; overflow-y: auto;">
             <table class="table table-striped table-sm" :items="listUser" :fields="fields">
             <thead>
                 <tr>

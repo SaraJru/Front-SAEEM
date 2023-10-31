@@ -108,7 +108,7 @@ export default {
         </div>
 
         <h2 style="color: white;">DEPARTAMENTOS</h2>
-        <div class="table-responsive small">
+        <div class="table-responsive small" style="max-height: 300px; overflow-y: auto;">
             <table class="table table-striped table-sm" :items="listDepartments" :fields="fields">
             <thead>
                 <tr>
