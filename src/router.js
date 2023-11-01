@@ -9,6 +9,8 @@ import WattmeterBrand from './components/WattmeterBrand.vue'
 import Wattmeter from './components/Wattmeter.vue'
 import Users from './components/Users.vue'
 import ListAccounts from './components/ListAccounts.vue'
+import CreateAccount from './components/CreateAccount.vue'
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const history = createWebHistory(import.meta.env.BASE_URL);
@@ -72,6 +74,13 @@ const routes = [
     name: 'ListAccounts',
     component: ListAccounts,
   },
+
+  {
+    path: '/createAccounts',
+    name: 'CreateAccounts',
+    component: CreateAccount,
+  },
+
 
 ];
 
