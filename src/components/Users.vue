@@ -108,10 +108,11 @@ export default {
             this.editFirstname = this.listUser[i].first_name;
             this.editLastname = this.listUser[i].last_name;
             this.editUsername = this.listUser[i].username;
-            this.editPassword = this.listUser[i].password;
+            // this.editPassword = this.listUser[i].password;
             this.editStatus = this.listUser[i].status;
             this.editRol = this.listUser[i].rol;
             this.editDepartment = this.listUser[i].department;
+            this.id = this.listUser[i]. id;
         },
         async listarRol(){
             axios.get('catalog/roles/')
@@ -164,40 +165,26 @@ export default {
                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Creación del usuario</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                    <div class="modal-body">
-                                        <label for="first_name" class="form-label">Primer Nombre</label>
-                                        <input type="text" class="form-control" id="first_name" placeholder="Primer Nombre" v-model="first_name">
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="last_name" class="form-label">Primer Apellido</label>
-                                        <input type="text" class="form-control" id="last_name" placeholder="Primer Apellido" v-model="last_name">
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Username" v-model="username">
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <label for="password" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Contraseña" v-model="password">
-                                    </div>
-
-                                    <div class="modal-body">          
-                                        <label for="rol" class="form-label">Rol de Usuario</label>
-                                        <select id="rol" class="form-select" :items="listRol" :fields="fieldsRol" v-model="rol">
-                                            <option selected>Selecciona rol de usuario</option>
-                                            <option v-for="lr in listRol" v-bind:key="lr.id" v-bind:value="lr.id">{{ lr.rol_name }}</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <label for="department" class="form-label">Departamento</label>
-                                        <select id="department" class="form-select" :items="listDep" :fields="fieldsDep" v-model="department">
-                                            <option selected>Selecciona departamento asignado</option>
-                                            <option v-for="ld in listDep" v-bind:key="ld.id" v-bind:value="ld.id">{{ ld.department_name }}</option>
-                                        </select>
-                                    </div>
-                                
+                                <div class="modal-body">
+                                    <label for="first_name" class="form-label">Primer Nombre</label>
+                                    <input type="text" class="form-control" id="first_name" placeholder="Primer Nombre" v-model="first_name">
+                                    <label for="last_name" class="form-label">Primer Apellido</label>
+                                    <input type="text" class="form-control" id="last_name" placeholder="Primer Apellido" v-model="last_name">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" v-model="username">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Contraseña" v-model="password">
+                                    <label for="rol" class="form-label">Rol de Usuario</label>
+                                    <select id="rol" class="form-select" :items="listRol" :fields="fieldsRol" v-model="rol">
+                                        <option selected>Selecciona rol de usuario</option>
+                                        <option v-for="lr in listRol" v-bind:key="lr.id" v-bind:value="lr.id">{{ lr.rol_name }}</option>
+                                    </select>
+                                    <label for="department" class="form-label">Departamento</label>
+                                    <select id="department" class="form-select" :items="listDep" :fields="fieldsDep" v-model="department">
+                                        <option selected>Selecciona departamento asignado</option>
+                                        <option v-for="ld in listDep" v-bind:key="ld.id" v-bind:value="ld.id">{{ ld.department_name }}</option>
+                                    </select>
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
                                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" @click="createUser">Crear</button>
@@ -241,50 +228,49 @@ export default {
                 <td>{{lu.insert_date}}</td>
                 <td>{{lu.update_date}}</td>
                 <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" @click="openEditModal(i)">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" @click="openEditModal(i)">
                         Editar
-                        </button>
+                    </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización del usuario</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label for="actualFirstName" class="form-label">Primer Nombre</label>
-                                        <input type="text" class="form-control" id="actualFirstName" placeholder="Primer Nombre" v-model="editFirstname">
-                                        <label for="actualLastName" class="form-label">Primer Apellido</label>
-                                        <input type="text" class="form-control" id="actualLastName" placeholder="Primer Apellido" v-model="editLastname">
-                                        <label for="actalUsuarname" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="actalUsuarname" placeholder="Username" v-model="editUsername">
-                                        <label for="actualPassword" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="actualPassword" placeholder="Contraseña" v-model="editPassword">
-                                        <label for="rol" class="form-label">Rol de Usuario</label>
-                                        <select id="rol" class="form-select" :items="listRol" :fields="fieldsRol" v-model="editRol">
-                                            <option selected>Selecciona rol de usuario</option>
-                                            <option v-for="lr in listRol" v-bind:key="lr.id" v-bind:value="lr.id">{{ lr.rol_name }}</option>
-                                        </select>
-                                        
-                                        <label for="department" class="form-label">Departamento</label>
-                                        <select id="department" class="form-select" :items="listDep" :fields="fieldsDep" v-model="editDepartment">
-                                            <option selected>Selecciona departamento asignado</option>
-                                            <option v-for="ld in listDep" v-bind:key="ld.id" v-bind:value="ld.id">{{ ld.department_name }}</option>
-                                        </select>
-                                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización del contador</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label class="form-label">Primer Nombre</label>
+                                    <input type="text" class="form-control" id="editFirtsName" placeholder="" v-model="editFirstname">
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="updateUsers">Guardar</button>
-                                    </div>
+                                    <label for="editLastName" class="form-label">Primer Apellido</label>
+                                    <input type="text" class="form-control" id="editLastName" placeholder="" v-model="editLastname">
 
+                                    <label for="editUsername" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="editUsername" placeholder="" v-model="editUsername">
+                                    
+                                    <label for="editRol" class="form-label">Rol</label>
+                                    <select id="editRol" class="form-select" :items="listRol" :fields="fieldsRol" v-model="editRol">
+                                        <option selected>Selecciona rol de usuario</option>
+                                        <option v-for="lr in listRol" v-bind:key="lr.id" v-bind:value="lr.id">{{ lr.rol_name }}</option>
+                                    </select>
+                                    
+                                    <label for="editDepartment" class="form-label">Departamento</label>
+                                    <select id="editDepartment" class="form-select" :items="listDep" :fields="fieldsDep" v-model="editDepartment">
+                                        <option selected>Selecciona departamento asignado</option>
+                                        <option v-for="ld in listDep" v-bind:key="ld.id" v-bind:value="ld.id">{{ ld.department_name }}</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="limpiar">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="updateUsers">Guardar</button>
                                 </div>
                             </div>
                         </div>
-                    </td>
+                    </div>
+                </td>
                 </tr>
             </tbody>
             </table>
