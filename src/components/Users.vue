@@ -77,7 +77,6 @@ export default {
                 first_name: this.editFirstname,
                 last_name: this.editLastname,
                 username: this.editUsername,
-                password: this.editPassword,
                 status: this.editStatus,
                 rol: this.editRol,
                 department: this.editDepartment
