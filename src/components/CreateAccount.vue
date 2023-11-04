@@ -1,6 +1,7 @@
 <script>
 
 import axios from 'axios'
+import router from '../router';
 
 export default {
     name: 'CreateAccounts',
@@ -13,7 +14,7 @@ export default {
             id_home_information: {
                 municipality_name: "San Pedro Sac.",
                 addres: "",
-                zone_numbe: 0,
+                zone_number: 0,
                 reference: "",
                 id_village: 0
             },
@@ -63,7 +64,64 @@ export default {
     },
     methods: {
         async limpiar(){
-            location.reload();
+            this.id_wattmeter = "";
+            this.id_home_information = "";
+            this.reading_order = "";
+            this.custom_mark = 0;
+            this.id_services = "";
+            this.id_client = "";
+            this.volts_requested = "";
+            this.cumulative_reading = "";
+            this.id_status = "";
+            this.id_read_user = "";
+            this.watts_hired = "";
+            this.exent_iva = "";
+            this.electric_transformer = "";
+            this.phase = "";
+            this.ap_amount = "";
+            this.installation_invoice = "";
+            this.contract_number = "";
+            this.pay_docs = "";
+            this.central_number = "";
+            this.net_type = "";
+            this.pole_meters = "";
+            this.pay_amount = "";
+            this.id_user = "";
+        },
+        createAccount(){
+            axios.post('accountData/', {
+                id_wattmeter: this.id_wattmeter,
+                id_home_information: this.id_home_information,
+                reading_order: this.reading_order,
+                custom_mark: this.custom_mark,
+                id_services: this.id_services,
+                id_client: this.id_client,
+                volts_requested: this.volts_requested,
+                cumulative_reading: this.cumulative_reading,
+                id_status: 1,
+                id_read_user: this.id_read_user,
+                watts_hired: this.watts_hired,
+                exent_iva: this.exent_iva,
+                electric_transformer: this.electric_transformer,
+                phase: this.phase,
+                ap_amount: this.ap_amount,
+                installation_invoice: this.installation_invoice,
+                contract_number: this.contract_number,
+                pay_docs: this.pay_docs,
+                central_number: this.central_number,
+                net_type: this.net_type,
+                pole_meters: this.pole_meters,
+                pay_amount: this.pay_amount,
+                id_user: this.id_user,
+            })
+            .then(response => {
+                console.log(response);
+                router.push('/listAccounts');
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            this.limpiar();
         },
         async listarID(){
             axios.get('catalog/identificationType/')
@@ -150,32 +208,32 @@ export default {
                         <form>
                             <!-- Aquí colocas los campos del formulario de la primera columna -->
                             <div class="mb-3">
-                                <label for="campo1" class="form-label">Primer Nombre</label>
-                                <input type="text" class="form-control mb-3" id="campo1" name="campo1">
+                                <label for="first_name" class="form-label">Primer Nombre</label>
+                                <input type="text" class="form-control mb-3" id="first_name" name="first_name" v-model="id_client.first_name">
 
-                                <label for="campo2" class="form-label">Segundo Nombre</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="second_name" class="form-label">Segundo Nombre</label>
+                                <input type="text" class="form-control mb-3" id="second_name" name="second_name" v-model="id_client.second_name">
                                 
-                                <label for="campo2" class="form-label">Tercer Nombre (si aplica)</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="third_name" class="form-label">Tercer Nombre (si aplica)</label>
+                                <input type="text" class="form-control mb-3" id="third_name" name="third_name" v-model="id_client.third_name">
 
-                                <label for="campo2" class="form-label">Primer Apellido</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="first_lastname" class="form-label">Primer Apellido</label>
+                                <input type="text" class="form-control mb-3" id="first_lastname" name="first_lastname" v-model="id_client.first_lastname">
 
-                                <label for="campo2" class="form-label">Segundo Apellido</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="second_lastname" class="form-label">Segundo Apellido</label>
+                                <input type="text" class="form-control mb-3" id="second_lastname" name="second_lastname" v-model="id_client.second_lastname">
 
-                                <label for="campo2" class="form-label">Apellido de casada (si aplica)</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="married_name" class="form-label">Apellido de casada (si aplica)</label>
+                                <input type="text" class="form-control mb-3" id="married_name" name="married_name" v-model="id_client.married_name">
                                 
-                                <label for="campo2" class="form-label">NIT</label>
-                                <input type="text" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="nit" class="form-label">NIT</label>
+                                <input type="text" class="form-control mb-3" id="nit" name="nit" v-model="id_client.nit">
 
-                                <label for="campo2" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control mb-3" id="email" name="email" v-model="id_client.email">
                                 
-                                <label for="campo2" class="form-label">Número de teléfono (sin guión)</label>
-                                <input type="phone" class="form-control mb-3" id="campo2" name="campo2">
+                                <label for="phone_number" class="form-label">Número de teléfono (sin guión)</label>
+                                <input type="phone" class="form-control mb-3" id="phone_number" name="phone_number" v-model="id_client.phone_number">
                                 
                                 <label for="id_type" class="form-label">Tipo de Identificación</label>
                                 <select id="id_type" class="form-select" :items="listIDs" :fields="fieldsID" v-model="id_client.identification">
@@ -194,14 +252,14 @@ export default {
                         <form>
                             <!-- Aquí colocas los campos del formulario de la segunda columna -->
                             <div class="mb-3">
-                                <label for="campo3" class="form-label">Dirección (sin zona)</label>
-                                <input type="address" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="addres" class="form-label">Dirección (sin zona)</label>
+                                <input type="address" class="form-control mb-3" id="addres" name="addres" v-model="id_home_information.addres">
 
-                                <label for="campo3" class="form-label">Zona</label>
-                                <input type="number" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="zone_number" class="form-label">Zona</label>
+                                <input type="number" class="form-control mb-3" id="zone_number" name="zone_number" v-model="id_home_information.zone_number">
                                 
-                                <label for="campo3" class="form-label">Referencia</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="reference" class="form-label">Referencia</label>
+                                <input type="text" class="form-control mb-3" id="reference" name="reference" v-model="id_home_information.reference">
                                 
                                 <label for="id_village" class="form-label">Aldea / Cantón</label>
                                 <select id="id_village" class="form-select" :items="listVillage" :fields="fieldsVillage" v-model="id_home_information.id_village">
@@ -221,7 +279,7 @@ export default {
                                 </select>
 
                                 <label for="custom_mark" class="form-label">Márchamo</label>
-                                <input type="text" class="form-control mb-3" id="custom_mark" placeholder="Número de Contador">
+                                <input type="number" class="form-control mb-3" id="custom_mark" name="custom_mark" v-model="custom_mark">
                             </div>
                             <!-- Agrega más campos aquí -->
                         </form>
@@ -237,14 +295,14 @@ export default {
                                     <option v-for="ls in listService" v-bind:key="ls.id" v-bind:value="ls.id">{{ ls.service_name }}</option>
                                 </select>
                                 
-                                <label for="campo3" class="form-label">Voltios Solicitados</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="volts_requested" class="form-label">Voltios Solicitados</label>
+                                <input type="text" class="form-control mb-3" id="volts_requested" name="volts_requested" v-model="volts_requested">
 
-                                <label for="campo3" class="form-label">Watts Contratados</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="watts_hired" class="form-label">Watts Contratados</label>
+                                <input type="text" class="form-control mb-3" id="watts_hired" name="watts_hired" v-model="watts_hired">
                                 
-                                <label for="campo3" class="form-label">Lectura acumulada</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="cumulative_reading" class="form-label">Lectura acumulada</label>
+                                <input type="text" class="form-control mb-3" id="cumulative_reading" name="cumulative_reading" v-model="cumulative_reading">
                                 
                                 <label for="id_village" class="form-label">Usuario Lector</label>
                                 <select id="id_village" class="form-select mb-3" :items="listUser" :fields="fieldsUser" v-model="id_read_user">
@@ -252,20 +310,20 @@ export default {
                                     <option v-for="lu in listUser" v-bind:key="lu.id" v-bind:value="lu.id">{{lu.first_name}} {{ lu.last_name }} - ({{lu.username}})</option>
                                 </select>
                                 
-                                <label for="campo3" class="form-label">Transformador eléctrico</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="electric_transformer" class="form-label">Transformador eléctrico</label>
+                                <input type="text" class="form-control mb-3" id="electric_transformer" name="electric_transformer" v-model="electric_transformer">
                                 
-                                <label for="campo3" class="form-label">Fase</label>
-                                <input type="number" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="phase" class="form-label">Fase</label>
+                                <input type="number" class="form-control mb-3" id="phase" name="phase" v-model="phase">
 
-                                <label for="campo3" class="form-label">Monto de alumbrado público</label>
-                                <input type="number" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="ap_amount" class="form-label">Monto de alumbrado público</label>
+                                <input type="number" class="form-control mb-3" id="ap_amount" name="ap_amount" v-model="ap_amount">
 
-                                <label for="campo3" class="form-label">Tipo de Red</label>
-                                <input type="number" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="net_type" class="form-label">Tipo de Red</label>
+                                <input type="number" class="form-control mb-3" id="net_type" name="net_type" v-model="net_type">
 
-                                <label for="campo3" class="form-label">Metros de Poste</label>
-                                <input type="number" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="pole_meters" class="form-label">Metros de Poste</label>
+                                <input type="number" class="form-control mb-3" id="pole_meters" name="pole_meters" v-model="pole_meters">
                                 
                             </div>
                         </form>
@@ -276,40 +334,40 @@ export default {
                         <form>
                             <!-- Aquí colocas los campos del formulario de la segunda columna -->
                             <div class="mb-3">
-                                <label for="campo3" class="form-label">Orden de Lectura</label>
-                                <input type="address" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="reading_order" class="form-label">Orden de Lectura</label>
+                                <input type="text" class="form-control mb-3" id="reading_order" name="reading_order" v-model="reading_order">
 
-                                <label for="campo3" class="form-label">Recibo de Instalación</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="installation_invoice" class="form-label">Recibo de Instalación</label>
+                                <input type="text" class="form-control mb-3" id="installation_invoice" name="installation_invoice" v-model="installation_invoice">
                                 
-                                <label for="campo3" class="form-label">Número de Contrato</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="contract_number" class="form-label">Número de Contrato</label>
+                                <input type="text" class="form-control mb-3" id="contract_number" name="contract_number" v-model="contract_number">
 
-                                <label for="campo3" class="form-label">Documento de Pago</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="pay_docs" class="form-label">Documento de Pago</label>
+                                <input type="text" class="form-control mb-3" id="pay_docs" name="pay_docs" v-model="pay_docs">
 
-                                <label for="campo3" class="form-label">Número de Central</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="central_number" class="form-label">Número de Central</label>
+                                <input type="text" class="form-control mb-3" id="central_number" name="central_number" v-model="central_number">
                                 
                                 <label for="id_village" class="form-label">Usuario quien crea esta cuenta</label>
-                                <select id="id_village" class="form-select mb-3" :items="listUser" :fields="fieldsUser" v-model="id_read_user">
+                                <select id="id_village" class="form-select mb-3" :items="listUser" :fields="fieldsUser" v-model="id_user">
                                     <option selected>Selecciona al usuario creador</option>
                                     <option v-for="lu in listUser" v-bind:key="lu.id" v-bind:value="lu.id">{{lu.first_name}} {{ lu.last_name }} - ({{lu.username}})</option>
                                 </select>
 
-                                <label for="campo3" class="form-label">Monto a pagar</label>
-                                <input type="text" class="form-control mb-3" id="campo3" name="campo3">
+                                <label for="pay_amount" class="form-label">Monto a pagar (Quetzales)</label>
+                                <input type="text" class="form-control mb-3" id="pay_amount" name="pay_amount" v-model="pay_amount">
                                 
                                 <div class="mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault"> Exento de IVA </label>
+                                    <input class="form-check-input" type="checkbox" value="1" id="exent_iva" v-model="exent_iva">
+                                    <label class="form-check-label" for="exent_iva"> Exento de IVA </label>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
+            <button type="submit" class="btn btn-primary col-lg-12" @click="createAccount">Crear</button>
         </div>
     </main>
 </template>
