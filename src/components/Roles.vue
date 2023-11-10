@@ -76,10 +76,10 @@ export default {
 </script>
 
 <template>
-    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2" style="color: white;" >Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
@@ -146,7 +146,7 @@ export default {
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización del rol</h1>
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización de roles</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

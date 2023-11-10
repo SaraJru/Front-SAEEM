@@ -21,9 +21,9 @@ if (store.state.autoLoginExecuted){
         <div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="sidebar border border-right col-md-3 col-lg-3 bg-body-tertiary" v-if="store.state.token">
-                    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel" style="min-height: 85vh;">
-                        <div class="offcanvas-body d-md-flex flex-column pt-lg-3 overflow-y-auto">
+                    <div class="sidebar border border-right col-md-3 col-lg-2 bg-body-tertiary" v-if="store.state.token">
+                    <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel" style="min-height: 80vh;">
+                        <div class="offcanvas-body d-md-flex flex-column pt-lg-2 overflow-y-auto">
                             
                             <ul class="nav flex-column">
                                 <li class="nav-item dropdown">
@@ -32,25 +32,25 @@ if (store.state.autoLoginExecuted){
                                     </h6>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="/status">Estados</a>
+                                            <router-link class="dropdown-item" to="/status">Estados</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/service">Servicios</a>
+                                            <router-link class="dropdown-item" to="/service">Servicios</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/roles">Roles</a>
+                                            <router-link class="dropdown-item" to="/roles">Roles</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/departments">Departamentos</a>
+                                            <router-link class="dropdown-item" to="/departments">Departamentos</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/village">Aldeas / Caserío</a>
+                                            <router-link class="dropdown-item" to="/village">Aldeas / Caserío</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/identificationType">Tipos de identificación</a>
+                                            <router-link class="dropdown-item" to="/identificationType">Tipos de identificación</router-link>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="/wattmeterBrand">Marcas de Contadores</a>
+                                            <router-link class="dropdown-item" to="/wattmeterBrand">Marcas de Contadores</router-link>
                                         </li>
                                     </ul>
                                 </li>
@@ -61,7 +61,7 @@ if (store.state.autoLoginExecuted){
                             </h6>
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="/wattmeter">Listado de Contadores</a>
+                                    <router-link class="nav-link d-flex align-items-center gap-2" to="/wattmeter">Listado de Contadores</router-link>
                                 </li>
                             </ul>
                             <!-- Usuarios -->
@@ -70,7 +70,7 @@ if (store.state.autoLoginExecuted){
                             </h6>
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="/users">Administrar Usuarios</a>
+                                    <router-link class="nav-link d-flex align-items-center gap-2" to="/users">Administrar Usuarios</router-link>
                                 </li>
                             </ul>
                             <!-- Dashboard de Cuentas -->
@@ -79,12 +79,12 @@ if (store.state.autoLoginExecuted){
                             </h6>
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="/clients">Administrar Clientes</a>
+                                    <router-link to="/clients" class="nav-link d-flex align-items-center gap-2"> Administrar Clientes </router-link>
                                 </li>
                             </ul>
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="/listAccounts">Administrar Cuentas</a>
+                                    <router-link class="nav-link d-flex align-items-center gap-2" to="/listAccounts">Administrar Cuentas</router-link>
                                 </li>
                             </ul>
                             <hr class="my-3">

@@ -101,9 +101,9 @@ export default {
 </script>
 
 <template>
-    <main class="col-md-9 ms-sm-auto col-lg-9 px-md-4 overflow-auto">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2" style="color: white;" >Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-primary" @click="redirectCreate">Crear cuenta</button>
@@ -173,7 +173,7 @@ export default {
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización del servicio</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualización de datos</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
