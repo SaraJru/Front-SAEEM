@@ -8,6 +8,7 @@ import Identification from './components/Identification.vue'
 import WattmeterBrand from './components/WattmeterBrand.vue'
 import Wattmeter from './components/Wattmeter.vue'
 import Users from './components/Users.vue'
+import Clients from './components/Clients.vue'
 import ListAccounts from './components/ListAccounts.vue'
 import CreateAccount from './components/CreateAccount.vue'
 
@@ -67,6 +68,11 @@ const routes = [
   {
     path: '/users',
     component: Users,
+  },
+
+  {
+    path: '/clients',
+    component: Clients,
   },
 
   {

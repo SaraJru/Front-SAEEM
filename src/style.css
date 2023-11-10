@@ -116,7 +116,7 @@ button:focus-visible {
 }
 
 .input input{
-  width: 90%;
+  width: 50%;
   height: 90%;
   background: transparent;
   border: none;

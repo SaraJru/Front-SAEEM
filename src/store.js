@@ -42,7 +42,10 @@ const store = new Vuex.Store({
             router.push('/');
         }
     },
-    modules: {}
+    modules: {},
+    getters: {
+        getToken: state => state.token
+    }
 });
 
 

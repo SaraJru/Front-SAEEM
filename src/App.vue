@@ -19,13 +19,9 @@ if (store.state.autoLoginExecuted){
     </div>
     <div>
         <div>
-            <header class="navbar bg-dark flex-md-nowrap shadow" data-bs-theme="dark">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" >Company name</a>
-            </header>
-
             <div class="container-fluid">
                 <div class="row">
-                    <div class="sidebar border border-right col-md-3 col-lg-3 bg-body-tertiary">
+                    <div class="sidebar border border-right col-md-3 col-lg-3 bg-body-tertiary" v-if="store.state.token">
                     <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel" style="min-height: 85vh;">
                         <div class="offcanvas-body d-md-flex flex-column pt-lg-3 overflow-y-auto">
                             
@@ -83,11 +79,16 @@ if (store.state.autoLoginExecuted){
                             </h6>
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="/clients">Administrar Clientes</a>
+                                </li>
+                            </ul>
+                            <ul class="nav flex-column mb-auto">
+                                <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="/listAccounts">Administrar Cuentas</a>
                                 </li>
                             </ul>
                             <hr class="my-3">
-                            <button type="button" class="btn btn-outline-secondary" @click="salir" v-if="logueado == null">Logout</button>
+                            <button type="button" class="btn btn-outline-secondary" @click="salir" v-if="store.state.token">Logout</button>
                         </div>
                     </div>
                 </div>
