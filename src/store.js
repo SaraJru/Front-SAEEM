@@ -13,12 +13,19 @@ const store = new Vuex.Store({
         },
         setAutoLoginExecuted(state, value) {
             state.autoLoginExecuted = value;
+        },
+        setRol(state, rol){
+            state.rol = rol
         }
     },
     actions: {
         guardarToken({commit}, token){
             commit('setToken', token);
             localStorage.setItem('token', token);
+        },
+        guardarRol({commit}, rol){
+            commit('setRol', rol);
+            localStorage.setItem('rol', rol);
         },
         autoLogin({commit, state}){
             if (!state.autoLoginExecuted) { // Verifica si autoLogin ya se ha ejecutado

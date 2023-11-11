@@ -46,7 +46,7 @@ if (store.state.autoLoginExecuted){
                                         <li>
                                             <router-link class="dropdown-item" to="/service">Servicios</router-link>
                                         </li>
-                                        <li>
+                                        <li v-if="store.state.rol == 1">
                                             <router-link class="dropdown-item" to="/roles">Roles</router-link>
                                         </li>
                                         <li>

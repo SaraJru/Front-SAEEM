@@ -2,6 +2,7 @@
 import axios from 'axios';
 import router from '../router'
 import store from '../store'
+import { jwtDecode } from "jwt-decode";
 
 export default {
     name: 'Login',
@@ -14,16 +15,25 @@ export default {
     },
     methods: {
         ingresar(){
-            axios.post('login/', {
+            axios.post('api/token/', {
                 username: this.username,
                 password: this.password
             })
             .then((response) => {
-                console.log(response.data);
                 return response.data;
             })
             .then((data) => {
-                store.dispatch('guardarToken', data.token);
+                store.dispatch('guardarToken', data.access);
+                const logueado = jwtDecode(data.access);
+
+                axios.get(`users/${logueado.user_id}/`)
+                .then(response => {
+                    store.dispatch('guardarRol', response.data.rol);
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+
                 router.push({name: 'ListAccounts'});
             })
             .catch((error) => {
