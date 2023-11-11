@@ -1,8 +1,17 @@
 <script setup>
-
+import { watchEffect } from 'vue'
 import store from './store'
+import router from './router';
 
 const logueado = store.state.token;
+
+watchEffect(() => {
+    if (!store.state.token) {
+        // Redirige a la página de login o realiza alguna acción específica
+        // Puedes usar Vue Router para la navegación programática
+        router.push('/login');
+    }
+});
 
 const salir = () => {
     store.dispatch('salir');

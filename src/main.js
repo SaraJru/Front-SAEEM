@@ -8,7 +8,7 @@ import "bootstrap"
 import axios from 'axios'
 import store from './store'
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/'
+axios.defaults.baseURL = 'https://pg2umg.pythonanywhere.com/'
 
 const app = createApp(App)
 
