@@ -13,7 +13,9 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "boxicons": "^2.1.4",
+    "jwt-decode": "^4.0.0",
     "vue": "^3.3.4",
+    "vue-jwt": "^0.0.8",
     "vue-router": "^4.2.4",
     "vuex": "^4.1.0"
   },
